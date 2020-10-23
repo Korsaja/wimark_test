@@ -1,0 +1,14 @@
+FROM golang:1.15.2
+
+ENV APP_NAME test_task
+ENV PORT 8181
+ENV APITOKEN 20c913eebde16684a8f1cf1aeb46298d
+
+COPY . /go/src/${APP_NAME}
+WORKDIR /go/src/${APP_NAME}
+
+RUN go build -o ${APP_NAME}
+
+CMD ./${APP_NAME}
+
+EXPOSE ${PORT}

@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+  mynet:
+    driver: bridge
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - mynet
+  web:
+    build: ./httpserver
+    hostname: web
+    ports:
+      - "8181:8181"
+    networks:
+      - mynet
+  cadvisor:
+    image: google/cadvisor:v0.32.0
+    hostname: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8080:8080"
+    networks:
+      - mynet
+
+
+
+
