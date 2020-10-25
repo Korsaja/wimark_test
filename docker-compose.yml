@@ -8,7 +8,7 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - "80:80"
+      - "880:80"
     networks:
       - mynet
   web:
