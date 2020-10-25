@@ -13,3 +13,6 @@ docker-compose build && docker-compose up -d
 cd ..
 rm -rf wimark_test/
 echo "Done."
+echo "for test use next commands:"
+echo "curl http://localhost/hello"
+echo "curl -iL http://localhost/cadvisor"
